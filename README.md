@@ -76,11 +76,21 @@ def count(filename):
       if not line.startwith('@'):
         count += 1
     return count
- ```
- 
- More python code will then be needed to compare Donor 1 and 3 to HCMV to see the possible similaries. 
+ ``` 
+ # Step 3
  Bowtie2 is then needed to assemble all four transcriptomes together. For this to be possible, 1 assembly via SPAdes will be done. For more information about SPAdes it will be linked here: http://cab.spbu.ru/software/spades/
  Write a SPAdes command to make a log file. 
+ ```Python 
+ import os
+
+samples = {
+    'SRR5660030': ('SRR5660030_1.fastq', 'SRR5660030_2.fastq'),
+    'SRR5660033': ('SRR5660033_1.fastq', 'SRR5660033_2.fastq'),
+    'SRR5660044': ('SRR5660044_1.fastq', 'SRR5660044_2.fastq'),
+    'SRR5660045': ('SRR5660045_1.fastq', 'SRR5660045_2.fastq'), 
+    }
+```
+
  Using Python code, the calculation of the number of contigs with a length > 1000 will be needed. The quality will need to be put into the log file. Furthermore, write Python code to also calculate the length of the assembly and place the value within the log file. 
  Finally, write Python code to retrieve the longest contig from the assembly. Specifically using the longest contig as blast+, query the nr nucleotide database to only the Betaherpesvirinae subfamily. This run should show the best alignment. Only the top 10 hits will be needed, which the information that will be pulled is listed below: 
 Subject accession, Percent identity, Alignment length, Start of alignment in query, End of alignment in query, Start of alignment in subject, End of alignment in subject, Bit score, E-value, and Subject Title.
