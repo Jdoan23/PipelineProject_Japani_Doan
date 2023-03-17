@@ -91,7 +91,38 @@ samples = {
     }
 ```
 
- Using Python code, the calculation of the number of contigs with a length > 1000 will be needed. The quality will need to be put into the log file. Furthermore, write Python code to also calculate the length of the assembly and place the value within the log file. 
+Using Python code, the calculation of the number of contigs with a length > 1000 will be needed. The quality will need to be put into the log file. Furthermore, write Python code to also calculate the length of the assembly and place the value within the log file. 
+```Python
+from Bio import SeqIO
+#Count the number of contigs with length > 1000
+num_long_contigs = 0
+for record in SeqIO.parse(assembly_file, "fasta"):
+     #is length of the record is greater then 1000 then the value of the num long contig will add 1 
+    if len(record) > 1000:
+        num_long_contigs += 1
+
+# Write the result to the log file. This will then contain the contig 
+with open(log_file, "a") as log:
+   #is lengths of the log file is greater then 1000 then it will put onto new line 
+    log.write(f"\nNumber of contigs > 1000 bp: {num_long_contigs}\n")
+
+    assembly_file = "Contig.fasta"
+log_file = "log.txt"
+
+# Will calculate the length of the assembly
+assembly_length = 0
+for record in SeqIO.parse(assembly_file, "fasta"):
+   #if the length of record is greater than 1000 then add to record.
+    if len(record) > 1000:
+        assembly_length += len(record)
+
+# Write the result to the log file
+with open(log_file, "a") as log:
+#is lengths of the log file is greater then 1000 then it will put onto new line 
+    log.write(f"\nLength of assembly > 1000 bp: {assembly_length}\n")
+
+    assembly_file = "Contigs.fasta"
+```
  Finally, write Python code to retrieve the longest contig from the assembly. Specifically using the longest contig as blast+, query the nr nucleotide database to only the Betaherpesvirinae subfamily. This run should show the best alignment. Only the top 10 hits will be needed, which the information that will be pulled is listed below: 
 Subject accession, Percent identity, Alignment length, Start of alignment in query, End of alignment in query, Start of alignment in subject, End of alignment in subject, Bit score, E-value, and Subject Title.
  The headers for each will be shorted to, "sacc", "pident", "length", "qstart", "qend", "sstart", "send", "bitscore", "evalue", "stitle"
