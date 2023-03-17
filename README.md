@@ -90,9 +90,9 @@ samples = {
     'SRR5660045': ('SRR5660045_1.fastq', 'SRR5660045_2.fastq'), 
     }
 ```
-
+# Step 4 
 Using Python code, the calculation of the number of contigs with a length > 1000 will be needed. The quality will need to be put into the log file. Furthermore, write Python code to also calculate the length of the assembly and place the value within the log file. 
-```Python
+``` Python
 from Bio import SeqIO
 #Count the number of contigs with length > 1000
 num_long_contigs = 0
@@ -123,6 +123,7 @@ with open(log_file, "a") as log:
 
     assembly_file = "Contigs.fasta"
 ```
+
  Finally, write Python code to retrieve the longest contig from the assembly. Specifically using the longest contig as blast+, query the nr nucleotide database to only the Betaherpesvirinae subfamily. This run should show the best alignment. Only the top 10 hits will be needed, which the information that will be pulled is listed below: 
 Subject accession, Percent identity, Alignment length, Start of alignment in query, End of alignment in query, Start of alignment in subject, End of alignment in subject, Bit score, E-value, and Subject Title.
  The headers for each will be shorted to, "sacc", "pident", "length", "qstart", "qend", "sstart", "send", "bitscore", "evalue", "stitle"
