@@ -172,19 +172,6 @@ with open('Counts.txt', 'w') as outfile:
     print('Contig Counts: ', Start)
     #This will print as needed for the log file. 
 ```
- # Step 4
- Bowtie2 is then needed to assemble all four transcriptomes together. For this to be possible, 1 assembly via SPAdes will be done. For more information about SPAdes it will be linked here: http://cab.spbu.ru/software/spades/
- Write a SPAdes command to make a log file. 
- ```Python 
- import os
-
-samples = {
-    'SRR5660030': ('SRR5660030_1.fastq', 'SRR5660030_2.fastq'),
-    'SRR5660033': ('SRR5660033_1.fastq', 'SRR5660033_2.fastq'),
-    'SRR5660044': ('SRR5660044_1.fastq', 'SRR5660044_2.fastq'),
-    'SRR5660045': ('SRR5660045_1.fastq', 'SRR5660045_2.fastq'), 
-    }
-```
 # Step 5 
 For the last step of the project, a local database of just sequences from the Betaherpesvirinae subfamily will be needed. For this to happen, we need to call in the family using specfic tools. 
 ```Python
