@@ -33,6 +33,7 @@ SRA-Toolkit : https://hpc.nih.gov/apps/sratoolkit.html
 
 Entrez Direct 
 Sites Recommended: https://www.ncbi.nlm.nih.gov/books/NBK179288/
+This code will be used within the command line.
 ```Python
 sh -c "$(curl -fsSL ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)"
 
